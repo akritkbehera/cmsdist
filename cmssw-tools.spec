@@ -1,12 +1,14 @@
-### RPM cms cmssw-tools 3.0
+### RPM cms cmssw-tools 4.0
 # With cmsBuild, change the above version only when a new tool is added
 
 ## INSTALL_DEPENDENCIES cmsLHEtoEOSManager gcc-fixincludes cms-cat cmssw-osenv cms-git-tools SCRAMV2
 ## UPLOAD_DEPENDENCIES dqmgui
 
 Requires: AXOL1TL
+Requires: TOPO
 Requires: CICADA
 Requires: OpenBLAS
+Requires: acts
 Requires: celeritas
 Requires: crab
 Requires: cmssw-wm-tools
@@ -56,6 +58,7 @@ Requires: jemalloc-debug
 Requires: jemalloc-prof
 Requires: json
 Requires: ktjet
+Requires: EMTF_NN
 Requires: L1METML
 Requires: L1TSC4NGJetModel
 Requires: lhapdf
@@ -149,7 +152,7 @@ Requires: python_tools
 Requires: dablooms
 Requires: zlib
 Requires: rivet
-
+Requires: xtd
 
 # Only for Linux platform.
 %ifos linux
@@ -159,6 +162,7 @@ Requires: gperftools
 
 Requires: alpaka
 Requires: clue
+Requires: CLUEstering
 Requires: libunwind
 %ifnarch ppc64le
 %ifnarch riscv64
@@ -188,7 +192,6 @@ Requires: oracle-fake
 Requires: xtensor
 Requires: xtl
 Requires: xgboost
-Requires: pytorch
 Requires: pytorch-custom-ops
 
 ## INCLUDE tfaot-models
