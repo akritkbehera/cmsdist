@@ -49,7 +49,7 @@ These variables are exported so that any *env.sh* script inside the tool source 
 <tool name="@TOOL_FILENAME@" version="@TOOL_VERSION@" revision="1">
   <lib name="openblas"/>
   <client>
-    <environment name="@TOOL_BASE@" default="@TOOL_ROOT@"/>
+    <environment name="$@TOOL_BASE@" default="@TOOL_ROOT@"/>
     <environment name="INCLUDE" default="$OPENBLAS_BASE/include"/>
     <environment name="LIBDIR" default="$OPENBLAS_BASE/lib"/>
     <environment name="BINDIR" default="$OPENBLAS_BASE/bin"/>
