@@ -1,0 +1,2 @@
+Requires: py3-maturin py3-puccinialin py3-tomli rust
+%define PipPreBuild export CARGO_HOME=%{_tmppath}/cargo_home;export MATURIN_CACHE_DIR=%{_tmppath}/cargo_home/maturin
