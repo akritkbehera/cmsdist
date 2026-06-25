@@ -41,9 +41,9 @@ make -C %{_builddir}/build %{makeprocesses}
 
 make -C %{_builddir}/build %{makeprocesses} install VERBOSE=1
 
-%{?ROCMPOstInstall:%ROCMPostInstall}
+%{?ROCMPostInstall:%ROCMPostInstall}
 
 %post
-%{?ROCMPrePost%ROCMPrePost}
+%{?ROCMPrePost:%ROCMPrePost}
 true
-%{?ROCMPostPost%ROCMPostPost}
+%{?ROCMPostPost:%ROCMPostPost}
