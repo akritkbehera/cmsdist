@@ -38,7 +38,8 @@ cmake \
   -DROCPROFSYS_BUILD_EXAMPLES=OFF \
   -DROCPROFSYS_BUILD_TESTING=OFF \
   -DCMAKE_FIND_DEBUG_MODE=OFF \
-  -DROCPROFSYS_USE_PAPI=OFF
+  -DROCPROFSYS_USE_PAPI=OFF \
+  -DPython3_ROOT_DIR=$PYTHON3_ROOT
 
 cmake --build %{_builddir}/build --parallel %{makeprocesses} --verbose
 
