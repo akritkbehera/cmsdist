@@ -1,2 +1,2 @@
-Requires: py3-torch abseil-cpp
+Requires: py3-torch
 ## INCLUDE pip/files/torch-scatter-common
