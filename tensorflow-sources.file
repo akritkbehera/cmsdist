@@ -84,6 +84,7 @@ BAZEL_OPTS="$BAZEL_OPTS --config=clang_local"
 # wins). Under C++17 fmt sets FMT_USE_CONSTEVAL 0 (FMT_CPLUSPLUS < 201709L) and the
 # error disappears -- reliable, unlike patching the bundled fmt via ctx.patch.
 BAZEL_OPTS="$BAZEL_OPTS --per_file_copt=external/onednn/.*[.]cpp@-std=c++17"
+BAZEL_OPTS="$BAZEL_OPTS --per_file_copt=external/jpegxl/.*enc_fast_lossless.*@-O1"
 # Build-time tools (protoc_minimal, ...) run under bazel with `env -` (cleared env),
 # so they lose LD_LIBRARY_PATH and can't find the CMS gcc13 libstdc++ (GLIBCXX_3.4.31) --
 # nor any other external lib -- falling back to the older system /lib64. Forward the full
