@@ -14,6 +14,11 @@ BuildRequires: bazel java-env git patchelf
 %endif
 
 Source: git+https://github.com/%{github_user}/tensorflow.git?obj=%{branch}/%{tag}&export=tensorflow-%{realversion}&output=/tensorflow-%{realversion}.tgz
+# Add a trailing unreachable statement after the fully-covered switch in
+# xla::cpu::EncodedBufferAllocationInfo::operator BufferAllocationInfo() so that
+# gcc does not fail the header with -Werror=return-type when it is included by
+# downstream CMSSW code (e.g. PhysicsTools/TensorFlowAOT).
+Patch0: tensorflow-tf2xla-return-type
 
 %if "%{?build_type:set}" != "set"
 %define build_type opt
@@ -28,6 +33,7 @@ Source: git+https://github.com/%{github_user}/tensorflow.git?obj=%{branch}/%{tag
 %prep
 
 %setup -q -n tensorflow-%{realversion}
+%patch0 -p1
 sed -i -e 's|lib/python[^/]*/site-packages/|lib/python%{cms_python3_major_minor_version}/site-packages/|'  third_party/systemlibs/pybind11.BUILD
 grep -c '^[a-zA-Z].*==' requirements_lock_3_12.txt 
 
