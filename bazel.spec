@@ -2,6 +2,7 @@
 ## INCLUDE cpp-standard
 Source: https://github.com/bazelbuild/bazel/releases/download/%{realversion}/bazel-%{realversion}-linux-x86_64
 BuildRequires: java-env
+AutoReqProv: no
 %prep
 %setup -T -c -n bazel-%{realversion}
 cp %{_sourcedir}/bazel-%{realversion}-linux-x86_64 bazel
