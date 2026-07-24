@@ -19,7 +19,7 @@ perl -p -i -e 's|DQMServices/Core/interface/||' ROOTFilePB.pb.cc fastHadd.cc
 g++ -O2 -o %i/bin/fastHadd ROOTFilePB.pb.cc ./fastHadd.cc \
       -I$PROTOBUF_ROOT/include -I$ABSEIL_CPP_ROOT/include \
       -L$PROTOBUF_ROOT/lib -lprotobuf \
-      -L$ABSEIL_CPP_ROOT/lib $ABSEIL_CPP_ROOT/lib/libabsl_*.so \
+      -L$ABSEIL_CPP_ROOT/lib \
       `root-config --cflags --libs`
 
 %install

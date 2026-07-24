@@ -14,18 +14,10 @@
 Source: https://github.com/protocolbuffers/protobuf/archive/v%{realversion}.zip
 Requires: zlib abseil-cpp
 BuildRequires: cmake ninja
-# improves text_format printing
-Patch0: protobuf_text_format
-Patch1: protobuf-non-virtual-dtor
 
 %prep
 %setup -n %{n}-%{realversion}
-#%patch0 -p1
-#%patch1 -p1
 
-# Make sure the default c++sdt stand is c++11
-#grep -q 'CMAKE_CXX_STANDARD  *11' CMakeLists.txt
-#sed -i -e 's|CMAKE_CXX_STANDARD  *11|CMAKE_CXX_STANDARD %{cms_cxx_standard}|' CMakeLists.txt
 %build
 rm -rf ../build
 mkdir ../build
@@ -35,7 +27,7 @@ cmake ../%{n}-%{realversion} \
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX="%{i}" \
     -DCMAKE_BUILD_TYPE=%{cmake_build_type} \
-    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD=%{cms_cxx_standard} \
     -Dprotobuf_BUILD_TESTS=OFF \
     -Dprotobuf_BUILD_SHARED_LIBS=ON \
     -Dutf8_range_ENABLE_INSTALL=ON \

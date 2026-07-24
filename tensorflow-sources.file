@@ -35,7 +35,6 @@ Patch0: tensorflow-tf2xla-return-type
 %setup -q -n tensorflow-%{realversion}
 %patch0 -p1
 sed -i -e 's|lib/python[^/]*/site-packages/|lib/python%{cms_python3_major_minor_version}/site-packages/|'  third_party/systemlibs/pybind11.BUILD
-grep -c '^[a-zA-Z].*==' requirements_lock_3_12.txt 
 
 %build
 
@@ -71,7 +70,7 @@ BAZEL_OPTS="$BAZEL_OPTS"
 %if "%{?arch_build_flags}"
 BAZEL_OPTS="$BAZEL_OPTS $(echo %{arch_build_flags} | tr ' ' '\n' | grep -v '^$' | sed -e 's|^|--copt=|' | tr '\n' ' ')"
 %endif
-BAZEL_OPTS="$BAZEL_OPTS --config=%{build_type} --cxxopt=-std=c++%{cms_cxx_standard} --host_cxxopt=-std=c++%{cms_cxx_standard} --jobs=auto --local_resources=memory=HOST_RAM*0.5"
+BAZEL_OPTS="$BAZEL_OPTS --config=%{build_type} --cxxopt=-std=c++%{cms_cxx_standard} --host_cxxopt=-std=c++%{cms_cxx_standard} --jobs=%{makeprocesses}"
 BAZEL_OPTS="$BAZEL_OPTS --config=nogcp --config=nonccl"
 # On Linux, XLA always compiles numa_hwloc.cc (//xla/tsl:with_numa_support = match_any
 # linux_any), but the CMS hwloc system BUILD only links -lhwloc under
